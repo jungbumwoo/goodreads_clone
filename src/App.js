@@ -1,5 +1,8 @@
 import React from 'react';
 import { HashRouter, Route} from "react-router-dom";
+import Detail from "./components/Detail";
+import Home from "./components/Home";
+import Profile from "./components/Profile";
 
 function App() {
   return (

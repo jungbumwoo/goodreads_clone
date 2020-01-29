@@ -1,3 +1,3 @@
 import { react } from "react";
 
-export default () => "Home";
+export default () => "Detail";

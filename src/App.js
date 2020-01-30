@@ -1,8 +1,9 @@
 import React from 'react';
 import { HashRouter, Route} from "react-router-dom";
-import Detail from "./components/Detail";
-import Home from "./components/Home";
-import Profile from "./components/Profile";
+import Detail from "./routes/Detail";
+import Home from "./routes/Home";
+import Profile from "./routes/Profile";
+
 
 function App() {
   return (

@@ -9,19 +9,14 @@ class Home extends React.Component {
         s_newbooks: []
     };
     getbooks = async () => {
-        const newbooks= await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.NEWYORKTIMES}`)
-                
-                .then(function (response) {
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-
-        console.log(newbooks)
+        const {data:{results:{books}}} = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.NEWYORKTIMES}`)
+        console.log(books);
+        this.setState({s_newbooks:books, isLoading: false});
     };
-    render() {
+    componentDidMount(){
         this.getbooks();
+    }
+    render() {
         const { isLoading, s_newbooks } = this.state;
         return (
             <section className="container">
@@ -30,9 +25,9 @@ class Home extends React.Component {
                         <span className="loader_text">Loading...</span>
                     </div>
                 ) : (
-                        <div className="s_newbooks">
-                            <p>가나다라</p>
-                        </div>
+                        s_newbooks.map(s => (
+                            <S_newbook key={s.rank} title={s.title} book_image={s.book_image} author={s.author}/>
+                        ))
                     )}
             </section>
         );

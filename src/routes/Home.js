@@ -2,6 +2,9 @@ import React from "react";
 import axios from "axios";
 import dotenv from "dotenv";
 import S_newbook from "../components/s_newbook";
+import "./Home.css";
+
+
 
 class Home extends React.Component {
     state = {
@@ -9,8 +12,8 @@ class Home extends React.Component {
         s_newbooks: []
     };
     getbooks = async () => {
-        const {data:{results:{books}}} = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.NEWYORKTIMES}`)
-        console.log(books);
+        dotenv.config();
+        const {data:{results:{books}}} = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=`)
         this.setState({s_newbooks:books, isLoading: false});
     };
     componentDidMount(){

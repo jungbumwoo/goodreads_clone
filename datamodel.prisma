@@ -1,10 +1,12 @@
 type User {
-    id: ID!
-    username: String!
-    email: String!
+    id: ID! @id @unique
+    username: String! @unique
+    email: String! @unique
+    firstName: String @default(value: "")
+    lastName: String
     keeplist: String!
-    uploadlist: String!
-    reviewlist: String!
+    uploadlist: [Book]
+    reviewlist: [Review]
 }
 
 type Book {
@@ -16,8 +18,21 @@ type Book {
     coverSmallUrl
     publisher
     description
-
     stars
-    gotreview
-    
+    gotreview   
 }
+
+type Review {
+    reviewid: ID! @id @unique
+    score: 
+    context:
+
+}
+
+책검색
+
+mutation
+회원가입
+책등록
+평점, 후기 남기기
+유저별 keeplist생성

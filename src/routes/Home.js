@@ -12,7 +12,7 @@ class Home extends React.Component {
         s_newbooks: []
     };
     getbooks = async () => {
-        const {data:{item}} = await axios.get(`http://book.interpark.com/api/bestSeller.api?key=011CCB4F6CD6B759AF7A88AD913C07C441403EC851FFAEE337E54DF961DC7410&categoryId=100&output=json`);
+        const {data:{item}} = await axios.get(``);
         console.log(item);
         const books = item.slice(0, 12);
         console.log(books);

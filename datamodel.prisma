@@ -1,0 +1,23 @@
+type User {
+    id: ID!
+    username: String!
+    email: String!
+    keeplist: String!
+    uploadlist: String!
+    reviewlist: String!
+}
+
+type Book {
+    itemId
+    title
+    author
+    pubDate
+    priceStandard
+    coverSmallUrl
+    publisher
+    description
+
+    stars
+    gotreview
+    
+}

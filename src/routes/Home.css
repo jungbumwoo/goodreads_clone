@@ -46,18 +46,22 @@ table {
 /*-------------------초 기 화------------------------*/
 
 .container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+
     width: 96%;
     background-color: salmon;
-    height: 600px;
+    height: 500px;
     margin: 0 auto;
 }
 
 .s_newbook {
-    display: inline-block;
     width: 16.6666%;
 }
 
-.img {
-    width:100px;
-    height: auto;
+.img{
+	margin-left: 0;
+	margin-right: 0;
 }
+

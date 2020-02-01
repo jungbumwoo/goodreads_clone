@@ -12,16 +12,18 @@ class Home extends React.Component {
         s_newbooks: []
     };
     getbooks = async () => {
-        
-        const {data:{results:{books}}} = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${process.env.NEWYORKTIMES}`)
-        this.setState({s_newbooks:books, isLoading: false});
+        const {data:{item}} = await axios.get(`http://book.interpark.com/api/bestSeller.api?key=011CCB4F6CD6B759AF7A88AD913C07C441403EC851FFAEE337E54DF961DC7410&categoryId=100&output=json`);
+        console.log(item);
+        const books = item.slice(0, 12);
+        console.log(books);
+        this.setState({s_newbooks:books, isLoading: false});        
     };
+
     componentDidMount(){
         this.getbooks();
     }
     render() {
-                
-        const key = process.env.NEWYORKTIMES;
+        const key = process.env.API_KEY;
         console.log(key);
         const { isLoading, s_newbooks } = this.state;
         return (
@@ -32,7 +34,7 @@ class Home extends React.Component {
                     </div>
                 ) : (
                         s_newbooks.map(s => (
-                            <S_newbook key={s.rank} title={s.title} book_image={s.book_image} author={s.author}/>
+                            <S_newbook key={s.itemId} id={s.itemId} title={s.title} book_image={s.coverSmallUrl} author={s.author}/>
                         ))
                     )}
             </section>

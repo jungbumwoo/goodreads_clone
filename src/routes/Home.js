@@ -3,8 +3,8 @@ import axios from "axios";
 import dotenv from "dotenv";
 import S_newbook from "../components/s_newbook";
 import "./Home.css";
-dotenv.config();
-
+import path from "path";
+dotenv.config({ path: path.resolve(__dirname, ".env") });
 
 class Home extends React.Component {
     state = {
@@ -13,18 +13,13 @@ class Home extends React.Component {
     };
     getbooks = async () => {
         const {data:{item}} = await axios.get(``);
-        console.log(item);
         const books = item.slice(0, 12);
-        console.log(books);
         this.setState({s_newbooks:books, isLoading: false});        
     };
-
     componentDidMount(){
         this.getbooks();
     }
     render() {
-        const key = process.env.API_KEY;
-        console.log(key);
         const { isLoading, s_newbooks } = this.state;
         return (
             <section className="container">
@@ -41,4 +36,5 @@ class Home extends React.Component {
         );
     };
 }
+
 export default Home;

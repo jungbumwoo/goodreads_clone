@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function S_newbook({ id, title, author, book_image }) {
     return (
         <div className="s_newbook">
-            <Link to={`/${id}`}>
+            <Link to={`/book/${id}`}>
                 <img className="img" src={book_image} alt={title} title={title} />
                 <div className="s_newbook__data">
                     <h5 className="s_newbook__title">{title}</h5>
